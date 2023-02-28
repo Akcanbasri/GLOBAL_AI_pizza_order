@@ -1,0 +1,10 @@
+Classic: 10.0
+Margherita: 12.0
+TurkPizza: 14.0
+PlainPizza: 16.0
+Olives: 3.0
+Mushrooms: 3.0
+GoatCheese: 3.0
+Meat: 4.0
+Onions: 3.0
+Corn: 2.0

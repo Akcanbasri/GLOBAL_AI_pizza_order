@@ -1,0 +1,15 @@
+* Please Choose a Pizza Base:
+--------------------------------
+1: Classic, 10$
+2: Margherita, 12$
+3: TurkPizza, 14$
+4: PlainPizza, 16$
+--------------------------------
+* and sauce of your choice:
+11: Olives, 3$
+12: Mushrooms, 3$
+13: GoatCheese, $3
+14: Meat, $4
+15: Onions, $3
+16: Corn, $2
+--------------------------------

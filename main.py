@@ -1,0 +1,135 @@
+import sys
+from cutomer_classes import *
+from pizza_classes import *
+
+
+def get_menu():
+    with open("Menu.txt", "r", encoding="utf-8") as f:
+        print(f.read())
+
+
+def get_menu_for_code():
+    with open("pizza_menu.txt", "r") as f:
+        lines = f.readlines()
+
+    pizza_menu = {}
+
+    for line in lines:
+        name, price = line.strip().split(": ")
+        pizza_menu[name] = float(price)
+
+    return pizza_menu
+
+
+def buy_pizza():
+    cost = 0
+    menu = get_menu_for_code()
+
+    while True:
+        order = input("What pizza you would like to order? Enter (N)ext to choose sauces. ")
+
+        if order.isdigit() and int(order) == 1:
+            price = menu.get("Classic")
+            cost += price
+            return cost, "Classic"
+
+        if order.isdigit() and int(order) == 2:
+            price = menu.get("Margherita")
+            cost += price
+            return cost, "Margherita"
+
+        if order.isdigit() and int(order) == 3:
+            price = menu.get("TurkPizza")
+            cost += price
+            return cost, "TurkPizza"
+
+        if order.isdigit() and int(order) == 4:
+            price = menu.get("PlainPizza")
+            cost += price
+            return cost, "PlainPizza"
+
+        if order.upper() == "N":
+            break
+        else:
+            sys.stderr.write("You Entered Wrong Order Operation! ")
+            sys.stderr.flush()
+
+
+def buy_sauces():
+    cost = 0
+    menu = get_menu_for_code()
+
+    while True:
+        order = input("What pizza you would like to order? Enter (N)ext to choose sauces. ")
+
+        if order.isdigit() and int(order) == 11:
+            price = menu.get("Olives")
+            cost += price
+            return cost, "Olives"
+
+        if order.isdigit() and int(order) == 12:
+            price = menu.get("Mushrooms")
+            cost += price
+            return cost, "Mushrooms"
+
+        if order.isdigit() and int(order) == 13:
+            price = menu.get("GoatCheese")
+            cost += price
+            return cost, "GoatCheese"
+
+        if order.isdigit() and int(order) == 14:
+            price = menu.get("Meat")
+            cost += price
+            return cost, "Meat"
+
+        if order.isdigit() and int(order) == 15:
+            price = menu.get("Onions")
+            cost += price
+            return cost, "Onions"
+
+        if order.isdigit() and int(order) == 16:
+            price = menu.get("Corn")
+            cost += price
+            return cost, "Corn"
+
+        if order.upper() == "N":
+            break
+        else:
+            sys.stderr.write("You Entered Wrong Order Operation! ")
+            sys.stderr.flush()
+
+        if order == "q":
+            break
+
+
+def main():
+    print("Welcome to Pizza order System made by Melis and Basri ")
+    name = input("What is yur name? ")
+    id_number = input("Enter your ID Number: ")
+    card_num = input("Enter your Credit card number for registration: ")
+    print("Enter your card password below!")
+    card_password = input('Enter your password for registration: ')
+
+    customer = Customer(name, id_number, card_num, card_password)
+
+    customer.save_to_csv(customer.name, customer.id_number, customer.card_number, customer.card_password)
+
+    print(f"Hello MR/Ms{name}. Here is the menu below, You can only choose one pizza and one sauce at the same time! ")
+    get_menu()
+
+    result_for_pizza = buy_pizza()
+    pizza_cost, pizza_name = result_for_pizza
+    result_for_sauces = buy_sauces()
+    sauces_cost, sauce_name = result_for_sauces
+
+    total_cost = pizza_cost + sauces_cost
+    pizza = Pizza(name, total_cost, pizza_name, sauce_name, datetime.datetime.now())
+    print(pizza)
+
+    customer.check_payment(customer.card_number, customer.card_password)
+
+    print("Thank you! Have a good Day!")
+
+
+if __name__ == "__main__":
+    main()
