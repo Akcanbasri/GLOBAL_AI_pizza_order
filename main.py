@@ -26,7 +26,7 @@ def buy_pizza():
     menu = get_menu_for_code()
 
     while True:
-        order = input("What pizza you would like to order? Enter (N)ext to choose sauces. ")
+        order = input("What pizza you would like to order?")
 
         if order.isdigit() and int(order) == 1:
             price = menu.get("Classic")
@@ -60,7 +60,7 @@ def buy_sauces():
     menu = get_menu_for_code()
 
     while True:
-        order = input("What pizza you would like to order? Enter (N)ext to choose sauces. ")
+        order = input("What sauce you would like to order?")
 
         if order.isdigit() and int(order) == 11:
             price = menu.get("Olives")
@@ -102,12 +102,60 @@ def buy_sauces():
             break
 
 
+def buy_beverage():
+    cost = 0
+    menu = get_menu_for_code()
+    while True:
+        order = input("What beverage you would like to order?")
+
+        if order.isdigit() and int(order) == 21:
+            price = menu.get("Cola")
+            if price is not None:
+                cost += price
+                return cost, "Cola"
+            else:
+                print("price not found beverage")
+
+        if order.isdigit() and int(order) == 22:
+            price = menu.get("Sprite")
+            if price is not None:
+                cost += price
+                return cost, "Sprite"
+            else:
+                print("price not found beverage")
+
+        if order.isdigit() and int(order) == 23:
+            price = menu.get("Fusetea")
+            if price is not None:
+                cost += price
+                return cost, "Fusetea"
+            else:
+                print("price not found beverage")
+
+        if order.isdigit() and int(order) == 24:
+            price = menu.get("Sevenup")
+            if price is not None:
+                cost += price
+                return cost, "Sevenup"
+            else:
+                print("price not found beverage")
+
+        if order.upper() == "N":
+            break
+        else:
+            sys.stderr.write("You Entered Wrong Order Operation! ")
+            sys.stderr.flush()
+
+        if order == "q":
+            break
+    print("--------------------------------\n")
+
+
 def main():
     print("Welcome to Pizza order System made by Melis and Basri ")
     name = input("What is yur name? ")
     id_number = input("Enter your ID Number: ")
     card_num = input("Enter your Credit card number for registration: ")
-    print("Enter your card password below!")
     card_password = input('Enter your password for registration: ')
 
     customer = Customer(name, id_number, card_num, card_password)
@@ -121,9 +169,12 @@ def main():
     pizza_cost, pizza_name = result_for_pizza
     result_for_sauces = buy_sauces()
     sauces_cost, sauce_name = result_for_sauces
+    result_for_beverage = buy_beverage()
+    beverage_cost, beverage_name = result_for_beverage
 
-    total_cost = pizza_cost + sauces_cost
-    pizza = Pizza(name, total_cost, pizza_name, sauce_name, datetime.datetime.now())
+    total_cost = pizza_cost + sauces_cost + beverage_cost
+    pizza = Pizza(name, total_cost, pizza_name, sauce_name, beverage_name, datetime.datetime.now())
+    print("--------------------------------\n")
     print(pizza)
 
     customer.check_payment(customer.card_number, customer.card_password)

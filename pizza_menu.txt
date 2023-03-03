@@ -8,3 +8,7 @@ GoatCheese: 3.0
 Meat: 4.0
 Onions: 3.0
 Corn: 2.0
+Cola: 5.0
+Sprite: 7.0
+Fusetea: 7.0
+Sevenup: 8.0

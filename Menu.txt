@@ -13,3 +13,8 @@
 15: Onions, $3
 16: Corn, $2
 --------------------------------
+* and your beverage menu:
+21: Cola, $5
+22: Sprite, 7$
+23: Fusetea, $7
+24: Sevenup, 8$
