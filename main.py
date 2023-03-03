@@ -67,32 +67,32 @@ def buy_sauces():
             cost += price
             return cost, "Olives"
 
-        if order.isdigit() and int(order) == 12:
+        elif order.isdigit() and int(order) == 12:
             price = menu.get("Mushrooms")
             cost += price
             return cost, "Mushrooms"
 
-        if order.isdigit() and int(order) == 13:
+        elif order.isdigit() and int(order) == 13:
             price = menu.get("GoatCheese")
             cost += price
             return cost, "GoatCheese"
 
-        if order.isdigit() and int(order) == 14:
+        elif order.isdigit() and int(order) == 14:
             price = menu.get("Meat")
             cost += price
             return cost, "Meat"
 
-        if order.isdigit() and int(order) == 15:
+        elif order.isdigit() and int(order) == 15:
             price = menu.get("Onions")
             cost += price
             return cost, "Onions"
 
-        if order.isdigit() and int(order) == 16:
+        elif order.isdigit() and int(order) == 16:
             price = menu.get("Corn")
             cost += price
             return cost, "Corn"
 
-        if order.upper() == "N":
+        elif order.upper() == "N":
             break
         else:
             sys.stderr.write("You Entered Wrong Order Operation! ")

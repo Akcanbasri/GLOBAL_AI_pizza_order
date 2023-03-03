@@ -8,5 +8,5 @@ class Pizza:
         self.beverage_name = beverage_name
 
     def __str__(self):
-        return f"Hello {self.name}. Here is your order details.\nYou ordered at {self.time}\n{self.pizza_name}" \
-               f"with {self.sauce} sauce. You ordered {self.beverage_name}\nYour bill is ${self.total_cost}"
+        return f"Hello {self.name}. Here is your order details.\n\nYou ordered at {self.time}\n{self.pizza_name}" \
+               f" with {self.sauce} sauce and {self.beverage_name}\nYour bill is ${self.total_cost}"
