@@ -14,6 +14,11 @@ class Customer:
     def save_to_csv(self, name, id_number, card_number, card_password):
         with open('cards.csv', 'a') as file:
             writer = csv.writer(file)
+
+            # add the header row
+            if file.tell() == 0:  # check if the file is empty
+                writer.writerow(['name', 'customer_id', 'card_number', 'card_password'])
+
             current_time = datetime.datetime.now()
             writer.writerow([name, id_number, card_number, card_password, current_time])
 
