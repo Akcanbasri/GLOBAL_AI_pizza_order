@@ -1,3 +1,4 @@
+# Pizza class with its description.
 class Pizza:
     def __init__(self, name, total_cost, pizza_name, sauce_name, beverage_name, time, extra):
         self.name = name
@@ -9,6 +10,6 @@ class Pizza:
         self.extra = extra
 
     def __str__(self):
-        return f"Hello {self.name}. Here is your order details.\nYou ordered at {self.time}\n" \
+        return f"Hello {self.name.capitalize()}. Here is your order details.\nYou ordered at {self.time}\n" \
                f"Pizza name: {self.pizza_name}\nPizza sacuce(s): {self.sauce}\nYour beverage: {self.beverage_name}\n" \
                f"Your extra(s): {self.extra}\nYour Total cost is ${self.total_cost}"

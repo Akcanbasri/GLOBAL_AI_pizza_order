@@ -1,7 +1,9 @@
+# libraries which is we need.
 import csv
 import datetime
 
 
+# Customer class with it's variables.
 class Customer:
     sozluk_cost = {"name": [], "id_number": [], "card_number": [], "card_password": []}
 
@@ -11,11 +13,11 @@ class Customer:
         self.card_number = card_number
         self.card_password = card_password
 
+    # A function to save customer to .csv file
     def save_to_csv(self, name, id_number, card_number, card_password):
         with open('cards.csv', 'a') as file:
             writer = csv.writer(file)
 
-            # add the header row
             if file.tell() == 0:  # check if the file is empty
                 writer.writerow(['name', 'customer_id', 'card_number', 'card_password'])
 
@@ -27,11 +29,12 @@ class Customer:
                                  Customer.sozluk_cost["card_number"][i], Customer.sozluk_cost["card_password"][i],
                                  current_time])
 
+    # A function to check customer for payment.
     def check_payment(self, card_number, card_password):
         with open('cards.csv', mode='r') as file:
             reader = csv.reader(file)
             for row in reader:
                 if len(row) >= 4 and row[2] == card_number and row[3] == card_password:
-                    print("Payment successful!")
+                    print("Payment successful!\n")
                     return
             print("Invalid card number or password")

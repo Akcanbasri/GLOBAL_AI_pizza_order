@@ -1,13 +1,17 @@
+# libraries which is we need.
 import sys
 from cutomer_classes import *
 from pizza_classes import *
+import time
 
 
+# Prints Menu for user.
 def get_menu():
     with open("Menu.txt", "r", encoding="utf-8") as f:
         print(f.read())
 
 
+# Reads menu for our codes.
 def get_menu_for_code():
     with open("pizza_menu.txt", "r") as f:
         lines = f.readlines()
@@ -21,6 +25,7 @@ def get_menu_for_code():
     return pizza_menu
 
 
+# Users Choose his/her own Pizzas here.
 def buy_pizza():
     cost = 0
     menu = get_menu_for_code()
@@ -55,6 +60,7 @@ def buy_pizza():
             sys.stderr.flush()
 
 
+# Users Choose his/her own Sauces here.
 def buy_sauces():
     cost = 0
     menu = get_menu_for_code()
@@ -102,6 +108,7 @@ def buy_sauces():
             break
 
 
+# Users Choose his/her own Beverages here.
 def buy_beverage():
     cost = 0
     menu = get_menu_for_code()
@@ -151,6 +158,7 @@ def buy_beverage():
     print("--------------------------------\n")
 
 
+# Users Choose his/her own Extras here.
 def buy_extra():
     cost = 0
     menu = get_menu_for_code()
@@ -198,23 +206,32 @@ def buy_extra():
             break
 
 
+# Here is our main function for our pizza simulation.
 def main():
     print("Welcome to Pizza order System made by Melis and Basri ")
+    # Getting info for our system.
     name = input("What is yur name? ")
     id_number = input("Enter your ID Number: ")
     card_num = input("Enter your Credit card number for registration: ")
     card_password = input('Enter your password for registration: ')
 
+    # Creating a customer class.
     customer = Customer(name, id_number, card_num, card_password)
-
+    # Adding customer to .csv file.
     customer.save_to_csv(customer.name, customer.id_number, customer.card_number, customer.card_password)
 
-    print(f"Hello MR/Ms{name}. Here is the menu below, You can only choose one pizza and one sauce at the same time! ")
+    print(
+        f"Hello MR/Ms {name.capitalize()}.Here is the menu below,"
+        f"You can only choose one pizza and one sauce at the same time! ")
+
+    # Calling get menu function.
     get_menu()
 
+    # Getting Pizza name info for our bill.
     result_for_pizza = buy_pizza()
     pizza_cost, pizza_name = result_for_pizza
 
+    # Getting Sauces name info for our bill.
     sauce_count = int(input("How many sauces would you like to add to your pizza? "))
     i = 0
     total_sauce_price = 0
@@ -231,9 +248,11 @@ def main():
         sys.stderr.write("You can only choose between 1 and 3 sauces!")
         sys.stderr.flush()
 
+    # Getting Beverage name info for our bill.
     result_for_beverage = buy_beverage()
     beverage_cost, beverage_name = result_for_beverage
 
+    # Getting Extras name info for our bill.
     extra_count = int(input("How many extras would you like to add to your pizza? "))
     i = 0
     total_extra_price = 0
@@ -250,16 +269,20 @@ def main():
         sys.stderr.write("You can only choose between 1 and 6 extras!")
         sys.stderr.flush()
 
+    # Calculating total price for our pizza with its price.
     total_cost = pizza_cost + total_sauce_price + beverage_cost + total_extra_price
     pizza = Pizza(name, total_cost, pizza_name, sauces_name_list, beverage_name, datetime.datetime.now(),
                   extras_name_list)
-    print("--------------------------------\n")
-    print(pizza)
-
+    print("--------------------------------")
+    #  Checking customer's card number and password from .csv file
+    print("Your payment is checking....\n")
+    time.sleep(2)
     customer.check_payment(customer.card_number, customer.card_password)
-
+    print(pizza)
     print("Thank you! Have a good Day!")
+    print("--------------------------------")
 
 
+# Calling main function
 if __name__ == "__main__":
     main()
