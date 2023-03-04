@@ -1,6 +1,6 @@
 # libraries which is we need.
 import sys
-from cutomer_classes import *
+from customer_classes import *
 from pizza_classes import *
 import time
 
