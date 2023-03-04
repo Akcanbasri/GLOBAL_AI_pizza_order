@@ -230,6 +230,7 @@ def main():
     # Getting Pizza name info for our bill.
     result_for_pizza = buy_pizza()
     pizza_cost, pizza_name = result_for_pizza
+    time.sleep(1)
 
     # Getting Sauces name info for our bill.
     sauce_count = int(input("How many sauces would you like to add to your pizza? "))
@@ -247,10 +248,12 @@ def main():
     else:
         sys.stderr.write("You can only choose between 1 and 3 sauces!")
         sys.stderr.flush()
+    time.sleep(1)
 
     # Getting Beverage name info for our bill.
     result_for_beverage = buy_beverage()
     beverage_cost, beverage_name = result_for_beverage
+    time.sleep(1)
 
     # Getting Extras name info for our bill.
     extra_count = int(input("How many extras would you like to add to your pizza? "))
@@ -268,6 +271,7 @@ def main():
     else:
         sys.stderr.write("You can only choose between 1 and 6 extras!")
         sys.stderr.flush()
+    time.sleep(1)
 
     # Calculating total price for our pizza with its price.
     total_cost = pizza_cost + total_sauce_price + beverage_cost + total_extra_price
