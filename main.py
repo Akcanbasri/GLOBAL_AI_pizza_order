@@ -167,13 +167,28 @@ def main():
 
     result_for_pizza = buy_pizza()
     pizza_cost, pizza_name = result_for_pizza
-    result_for_sauces = buy_sauces()
-    sauces_cost, sauce_name = result_for_sauces
+
+    sauce_count = int(input("How many sauces would you like to add to your pizza? "))
+    i = 0
+    total_sauce_price = 0
+    sauces_name_list = list()
+
+    if 1 <= sauce_count <= 3:
+        while i < sauce_count:
+            result_for_sauces = buy_sauces()
+            sauces_cost, sauce_name = result_for_sauces
+            total_sauce_price += sauces_cost
+            sauces_name_list.append(sauce_name)
+            i += 1
+    else:
+        sys.stderr.write("You can only choose between 1 and 3 sauces!")
+        sys.stderr.flush()
+
     result_for_beverage = buy_beverage()
     beverage_cost, beverage_name = result_for_beverage
 
-    total_cost = pizza_cost + sauces_cost + beverage_cost
-    pizza = Pizza(name, total_cost, pizza_name, sauce_name, beverage_name, datetime.datetime.now())
+    total_cost = pizza_cost + total_sauce_price + beverage_cost
+    pizza = Pizza(name, total_cost, pizza_name, sauces_name_list, beverage_name, datetime.datetime.now())
     print("--------------------------------\n")
     print(pizza)
 
