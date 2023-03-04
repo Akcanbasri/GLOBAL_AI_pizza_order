@@ -1,4 +1,4 @@
-This Codes Writed by Hasan Basri Akcan and Melis İldireci
+This Codes Writed by Hasan Basri Akcan and Melis İldireci.
 
 # GLOBAL_AI_pizza_order
 
