@@ -1,21 +1,15 @@
-* Please Choose a Pizza Base:
---------------------------------
-1: Classic, 10$
-2: Margherita, 12$
-3: TurkPizza, 14$
-4: PlainPizza, 16$
---------------------------------
-* and sauce of your choice:
-11: Olives, 3$
-12: Mushrooms, 3$
-13: GoatCheese, $3
-14: Meat, $4
-15: Onions, $3
-16: Corn, $2
---------------------------------
-* and your beverage menu:
-21: Cola, $5
-22: Sprite, 7$
-23: Fusetea, $7
-24: Sevenup, 8$
---------------------------------
+--------------------------------	--------------------------------
+* Please Choose a Pizza Base:		* and beverage of your choice:
+1: Classic, 10$				        21: Cola, $5
+2: Margherita, 12$			        22: Sprite, 7$
+3: TurkPizza, 14$			        23: Fusetea, $7
+4: PlainPizza, 16$			        24: Sevenup, 8$
+--------------------------------	--------------------------------
+* and sauce of your choice:		    * and extra material of your choice
+11: Olives, 3$				        31: Olives, $3
+12: Mushrooms, 3$			        32: SweetCorn, $3
+13: GoatCheese, $3			        33: Tomato, $5
+14: Meat, $4				        34: Mozarella, $7
+15: Onions, $3				        35: Pickle, $10
+16: Corn, $2				        36: Pepper, $2
+--------------------------------	--------------------------------

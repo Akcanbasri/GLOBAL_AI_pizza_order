@@ -151,6 +151,53 @@ def buy_beverage():
     print("--------------------------------\n")
 
 
+def buy_extra():
+    cost = 0
+    menu = get_menu_for_code()
+
+    while True:
+        order = input("What extras you would like to order?")
+
+        if order.isdigit() and int(order) == 31:
+            price = menu.get("Olives")
+            cost += price
+            return cost, "Olives"
+
+        elif order.isdigit() and int(order) == 32:
+            price = menu.get("SweetCorn")
+            cost += price
+            return cost, "SweetCorn"
+
+        elif order.isdigit() and int(order) == 33:
+            price = menu.get("Tomato")
+            cost += price
+            return cost, "Tomato"
+
+        elif order.isdigit() and int(order) == 34:
+            price = menu.get("Mozarella")
+            cost += price
+            return cost, "Mozarella"
+
+        elif order.isdigit() and int(order) == 35:
+            price = menu.get("Pickle")
+            cost += price
+            return cost, "Pickle"
+
+        elif order.isdigit() and int(order) == 36:
+            price = menu.get("Pepper")
+            cost += price
+            return cost, "Pepper"
+
+        elif order.upper() == "N":
+            break
+        else:
+            sys.stderr.write("You Entered Wrong Order Operation! ")
+            sys.stderr.flush()
+
+        if order == "q":
+            break
+
+
 def main():
     print("Welcome to Pizza order System made by Melis and Basri ")
     name = input("What is yur name? ")
@@ -173,7 +220,7 @@ def main():
     total_sauce_price = 0
     sauces_name_list = list()
 
-    if 1 <= sauce_count <= 3:
+    if 1 <= sauce_count < 4:
         while i < sauce_count:
             result_for_sauces = buy_sauces()
             sauces_cost, sauce_name = result_for_sauces
@@ -187,8 +234,25 @@ def main():
     result_for_beverage = buy_beverage()
     beverage_cost, beverage_name = result_for_beverage
 
-    total_cost = pizza_cost + total_sauce_price + beverage_cost
-    pizza = Pizza(name, total_cost, pizza_name, sauces_name_list, beverage_name, datetime.datetime.now())
+    extra_count = int(input("How many extras would you like to add to your pizza? "))
+    i = 0
+    total_extra_price = 0
+    extras_name_list = list()
+
+    if 1 <= extra_count <= 6:
+        while i < extra_count:
+            result_for_extras = buy_extra()
+            extras_cost, extra_name = result_for_extras
+            total_extra_price += extras_cost
+            extras_name_list.append(extra_name)
+            i += 1
+    else:
+        sys.stderr.write("You can only choose between 1 and 6 extras!")
+        sys.stderr.flush()
+
+    total_cost = pizza_cost + total_sauce_price + beverage_cost + total_extra_price
+    pizza = Pizza(name, total_cost, pizza_name, sauces_name_list, beverage_name, datetime.datetime.now(),
+                  extras_name_list)
     print("--------------------------------\n")
     print(pizza)
 

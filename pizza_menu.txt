@@ -12,3 +12,9 @@ Cola: 5.0
 Sprite: 7.0
 Fusetea: 7.0
 Sevenup: 8.0
+Olives: 3.0
+SweetCorn: 3.0
+Tomato: 5.0
+Mozarella: 7.0
+Pickle: 10.0
+Pepper: 2.0
